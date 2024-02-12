@@ -21,12 +21,14 @@ while True:
     print("Invalid,try again")      
 
 max_score=50
-player_scores= [0 for _in range(players)]   
+player_scores = [ 0 for _in range(players) ]   
 #0 for _in range():puts a zero in the list for each player we have
 
 while max(player_scores) < max_score:
    
    for player_idx in range(players):
+       print("\nplayer", player_idx + 1,"turn has just started")
+       print("Your total score is:", player_scores[player_idx],"\n")
        current_score=0
 
        while True:
@@ -37,6 +39,7 @@ while max(player_scores) < max_score:
            value=roll()
            if value==1:
                 print("You have rolled a 1! Turn done!")
+                current_score=0
                 break
            else:
                 current_score += value
@@ -44,3 +47,7 @@ while max(player_scores) < max_score:
 
         player_scores[player_idx] += current_score       
 
+
+max_score=max(player_scores)
+winning_idx=player_scores.index(max_score)
+print("Player number", winning_idx +1,"is the winner with a score of :", max_score)
